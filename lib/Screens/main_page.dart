@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodecom/Screens/subScreens/HomePage.dart';
+import 'package:foodecom/Screens/subScreens/menu_page.dart';
+import 'package:foodecom/Screens/subScreens/offers_page.dart';
+import 'package:foodecom/Screens/subScreens/profile_page.dart';
 import '../styles/colors.dart';
 import 'package:foodecom/model/main_menu_model.dart';
 
@@ -85,11 +88,11 @@ class _MainPageState extends State<MainPage> {
   _getBody() {
     switch (currentIndex) {
       case 0:
-        return Center(child: Text("Menu"));
+        return MenuHome();
       case 1:
-        return Center(child: Text("Offers"));
+        return Offers();
       case 2:
-        return Center(child: Text("Profile"));
+        return ProfilePage();
       case 3:
         return Center(child: Text("More"));
       default:
