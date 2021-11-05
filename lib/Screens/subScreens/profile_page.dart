@@ -24,87 +24,111 @@ class ProfilePage extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          CircleAvatar(
-            radius: 80,
-            backgroundImage: AssetImage("images/d1.jpg",),
-          ),
-          Text("Edit Profile",style: TextStyle(color: mainColor,fontSize: 10),),
-          Text("Hi there Emilla!",style: TextStyle(color: primaryFontColor,fontSize: 20),),
-          Text("Sign Out",style: TextStyle(color: placeholderColor,fontSize: 10),),
-          SizedBox(height: 20,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
-            child: TextField(
-              decoration: InputDecoration(
-//          border: OutlineInputBorder(
-//              borderRadius: BorderRadius.circular(200)
-//          ),
-                  //prefixIcon: Icon(Icons.search),
-                  //hintText: 'Search food',
-                labelText: 'Name',
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 70,
+              backgroundImage: AssetImage("images/p1.png",),
+            ),
+            Row(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.edit,color: mainColor,size: 15,),
+                Text("Edit Profile",style: TextStyle(color: mainColor,fontSize: 15),),
+              ],
+            ),
+            Text("Hi there Emilla!",style: TextStyle(color: primaryFontColor,fontSize: 20),),
+            Text("Sign Out",style: TextStyle(color: placeholderColor,fontSize: 10),),
+            SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+              child: TextField(
+                decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                  labelText: 'Name',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(22),  // Added this
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
-            child: TextField(
-              decoration: InputDecoration(
-//          border: OutlineInputBorder(
-//              borderRadius: BorderRadius.circular(200)
-//          ),
-                //prefixIcon: Icon(Icons.search),
-                //hintText: 'Search food',
-                labelText: 'Name',
+            SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+              child: TextField(
+                  decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                    labelText: 'Email',
+                    isDense: true,                      // Added this
+                    contentPadding: EdgeInsets.all(22),  // Added this
+                  ),
               ),
             ),
-          ),
-          SizedBox(height: 20,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
-            child: TextField(
-              decoration: InputDecoration(
-//          border: OutlineInputBorder(
-//              borderRadius: BorderRadius.circular(200)
-//          ),
-                //prefixIcon: Icon(Icons.search),
-                //hintText: 'Search food',
-                labelText: 'Name',
+            SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+              child: TextField(
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                  labelText: 'Mobile No',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(22),  // Added this
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
-            child: TextField(
-              decoration: InputDecoration(
-//          border: OutlineInputBorder(
-//              borderRadius: BorderRadius.circular(200)
-//          ),
-                //prefixIcon: Icon(Icons.search),
-                //hintText: 'Search food',
-                labelText: 'Name',
+            SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+              child: TextField(
+                decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                  labelText: 'Address',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(22),  // Added this
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
-            child: TextField(
-              decoration: InputDecoration(
-//          border: OutlineInputBorder(
-//              borderRadius: BorderRadius.circular(200)
-//          ),
-                //prefixIcon: Icon(Icons.search),
-                //hintText: 'Search food',
-                labelText: 'Name',
+            SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+              child: TextField(
+                decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                  labelText: 'password',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(22),  // Added this
+                ),
               ),
             ),
-          ),
-          //TextButton(onPressed: (){}, child: Text("Edit Profile",style: TextStyle(color: mainColor,fontSize: 20),))
-        ],
+            SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+              child: TextField(
+                decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                  labelText: 'confirm password',
+                  isDense: true,                      // Added this
+                  contentPadding: EdgeInsets.all(22),  // Added this
+                ),
+              ),
+            ),
+            //TextButton(onPressed: (){}, child: Text("Edit Profile",style: TextStyle(color: mainColor,fontSize: 20),))
+          ],
+        ),
       ),
     );
   }

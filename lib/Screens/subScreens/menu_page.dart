@@ -17,23 +17,6 @@ class _MenuHomeState extends State<MenuHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(
-//        //backgroundColor: mainColor,
-//        title: Padding(
-//          padding: const EdgeInsets.all(8.0),
-//          child: Text(
-//            "Menu",
-//            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-//          ),
-//        ),
-//        actions: [
-//          Padding(
-//            padding: const EdgeInsets.only(right: 15.0),
-//            child: IconButton(
-//                onPressed: () {}, icon: Icon(FontAwesomeIcons.shoppingCart)),
-//          )
-//        ],
-//      ),
       body: checkState(),
     );
   }
@@ -76,7 +59,7 @@ class _MenuHomeState extends State<MenuHome> {
                   borderRadius: BorderRadius.circular(50)
               ),
             ),
-          )
+          ),
         ],
       ),
     );

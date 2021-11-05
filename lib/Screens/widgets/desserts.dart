@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foodecom/Screens/subScreens/Detail_Food_Page.dart';
 import 'package:foodecom/model/Desserts_list_model.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
@@ -21,50 +22,55 @@ class dessertsListView extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 210,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(data.imagePath!.toString()),
-                  fit: BoxFit.fill
-                )
-              ),
-              child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: kScaffoldPadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      data.label!.toString(),
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                        color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,
+            InkWell(
+              onTap: (){
+                Detail();
+              },
+              child: Container(
+                height: 210,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(data.imagePath!.toString()),
+                    fit: BoxFit.fill
+                  )
+                ),
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        data.label!.toString(),
+                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                          color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,
+                        ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.star,color: mainColor,size: 15,),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 2),
-                          child: Text(data.rating.toString(),style: TextStyle(color: mainColor),),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0,right: 2),
-                          child: Text(data.ratingTotal.toString(),style: TextStyle(color: placeholderColor),),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 2),
-                          child: Text(".",style: TextStyle(color: mainColor,fontWeight: FontWeight.bold,fontSize: 15),),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left:2,right: 2),
-                          child: Text(data.label.toString(),style: TextStyle(color: placeholderColor,fontWeight: FontWeight.bold),),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10,)
-                  ],
+                      Row(
+                        children: [
+                          Icon(Icons.star,color: mainColor,size: 15,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2),
+                            child: Text(data.rating.toString(),style: TextStyle(color: mainColor),),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 0,right: 2),
+                            child: Text(data.ratingTotal.toString(),style: TextStyle(color: placeholderColor),),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2),
+                            child: Text(".",style: TextStyle(color: mainColor,fontWeight: FontWeight.bold,fontSize: 15),),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left:2,right: 2),
+                            child: Text(data.label.toString(),style: TextStyle(color: placeholderColor,fontWeight: FontWeight.bold),),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 10,)
+                    ],
+                  ),
                 ),
               ),
             ),

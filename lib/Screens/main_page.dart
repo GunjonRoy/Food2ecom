@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodecom/Screens/subScreens/Detail_Food_Page.dart';
 import 'package:foodecom/Screens/subScreens/HomePage.dart';
 import 'package:foodecom/Screens/subScreens/menu_page.dart';
+import 'package:foodecom/Screens/subScreens/more_page.dart';
 import 'package:foodecom/Screens/subScreens/offers_page.dart';
 import 'package:foodecom/Screens/subScreens/profile_page.dart';
+import 'package:foodecom/Screens/subScreens/test.dart';
 import '../styles/colors.dart';
 import 'package:foodecom/model/main_menu_model.dart';
 
@@ -16,11 +19,11 @@ class _MainPageState extends State<MainPage> {
   int currentIndex = -1;
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
       //appBar:
       body: _getBody(),
       //backgroundColor: MaterialStateProperty.all<Color>(mainColor),
-       floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         backgroundColor: currentIndex == -1 ? mainColor : secondaryFontColor,
         onPressed: () {
           setState(() {
@@ -30,7 +33,7 @@ class _MainPageState extends State<MainPage> {
         child: const Icon(FontAwesomeIcons.home),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-       bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -94,7 +97,7 @@ class _MainPageState extends State<MainPage> {
       case 2:
         return ProfilePage();
       case 3:
-        return Center(child: Text("More"));
+        return MorePage();
       default:
         return HomePage();
     }
