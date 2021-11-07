@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodecom/Screens/subScreens/Detail_Food_Page.dart';
 import 'package:foodecom/Screens/subScreens/HomePage.dart';
 import 'package:foodecom/Screens/subScreens/menu_page.dart';
+import 'package:foodecom/Screens/subScreens/more_notification_page.dart';
 import 'package:foodecom/Screens/subScreens/more_page.dart';
 import 'package:foodecom/Screens/subScreens/more_payment_details.dart';
 import 'package:foodecom/Screens/subScreens/offers_page.dart';
@@ -100,7 +101,7 @@ class _MainPageState extends State<MainPage> {
       case 3:
         return MorePage();
       default:
-        return PaymentDetail();
+        return Notifications();
     }
   }
 }

@@ -3,8 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
+import 'package:flutter/widgets.dart';
+import 'package:slider_button/slider_button.dart';
 
-class PaymentDetail extends StatelessWidget {
+class PaymentDetail extends StatefulWidget {
+  @override
+  _PaymentDetailState createState() => _PaymentDetailState();
+}
+
+class _PaymentDetailState extends State<PaymentDetail> {
+  bool isSwitched = false;
+  var textValue = 'Switch is OFF';
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -158,7 +168,10 @@ class PaymentDetail extends StatelessWidget {
                                     border: Border.all(color: mainColor)),
                                 child: FittedBox(
                                   fit: BoxFit.fitWidth,
-                                  child: Text("Delete Card",style: TextStyle(color: mainColor),),
+                                  child: Text(
+                                    "Delete Card",
+                                    style: TextStyle(color: mainColor),
+                                  ),
                                 ),
                               ),
                             ],
@@ -185,7 +198,6 @@ class PaymentDetail extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-
                               FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
@@ -229,7 +241,9 @@ class PaymentDetail extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 10),
                         minimumSize: Size(5, 5),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _showModalBottomSheet(size.height * .8, context);
+                      },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
@@ -266,6 +280,196 @@ class PaymentDetail extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  _showModalBottomSheet(var size, BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return Container(
+            height: size,
+            width: double.infinity,
+            //color: Colors.grey.shade200,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20))),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text("Add Credit/Debit Card"),
+                      ),
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Icon(Icons.cancel_outlined),
+                      )
+                    ],
+                  ),
+                  TextField(
+                    onChanged: (value) {},
+                    decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                      labelText: 'Card Number',
+                      isDense: true, // Added this
+                      contentPadding: EdgeInsets.all(22), // Added this
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text("Expiry"),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        child: TextField(
+                          onChanged: (value) {},
+                          decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                            labelText: 'MM',
+                            isDense: true, // Added this
+                            contentPadding: EdgeInsets.all(22), // Added this
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        child: TextField(
+                          onChanged: (value) {},
+                          decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                            labelText: 'YY',
+                            isDense: true, // Added this
+                            contentPadding: EdgeInsets.all(22), // Added this
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  TextField(
+                    onChanged: (value) {},
+                    decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                      labelText: 'Sequrity Code',
+                      isDense: true, // Added this
+                      contentPadding: EdgeInsets.all(22), // Added this
+                    ),
+                  ),
+                  TextField(
+                    onChanged: (value) {},
+                    decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                      labelText: 'First Name',
+                      isDense: true, // Added this
+                      contentPadding: EdgeInsets.all(22), // Added this
+                    ),
+                  ),
+                  TextField(
+                    onChanged: (value) {},
+                    decoration: InputDecoration(
+//                  border: OutlineInputBorder(
+//                    borderRadius: BorderRadius.circular(50)
+//                  ),
+                      labelText: 'Last Name',
+                      isDense: true, // Added this
+                      contentPadding: EdgeInsets.all(22), // Added this
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          "You can remove this card\nat any time",
+                          style:
+                              Theme.of(context).textTheme.headline5!.copyWith(
+                                    color: primaryFontColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                        ),
+                      ),
+                      Switch(
+                        value: isSwitched,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitched = value;
+                            print(isSwitched);
+                          });
+                        },
+                        activeTrackColor: Colors.yellow,
+                        activeColor: Colors.orangeAccent,
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(
+//                  style: ElevatedButton.styleFrom(
+//                    shape: RoundedRectangleBorder(
+//                      borderRadius: BorderRadius.circular(50),
+//                    ),
+//                    padding: EdgeInsets.symmetric(horizontal: 10),
+//                    //minimumSize: Size(5, 5),
+//                  ),
+                    onPressed: () {
+                      _showModalBottomSheet(size.height * .7, context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Icon(
+                              FontAwesomeIcons.plus,
+                            ),
+                          ),
+                          FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              "Add Card",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ));
+      },
     );
   }
 }

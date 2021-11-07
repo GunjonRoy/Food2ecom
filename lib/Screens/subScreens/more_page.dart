@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodecom/Screens/subScreens/more_payment_details.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,6 +40,7 @@ class MorePage extends StatelessWidget {
               child: InkWell(
                 onTap: (){
                   print("okkkk>>>>>");
+                  PaymentDetail();
                 },
                 child: _buildButtonCustom(
                     size,
