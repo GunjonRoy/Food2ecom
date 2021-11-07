@@ -137,12 +137,28 @@ class PaymentDetail extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Tab(icon: Image.asset("images/visa.png",fit: BoxFit.fill,)),
+                              SizedBox(
+                                height: 90.h,
+                                width: 150.w,
+                                child: Image.asset(
+                                  "images/visa.png",
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
                               FittedBox(
                                 fit: BoxFit.fitWidth,
-                                child: Icon(
-                                  FontAwesomeIcons.check,
-                                  color: mainColor,
+                                child: Text("**** **** **** 3241"),
+                              ),
+                              Container(
+                                alignment: Alignment.center,
+                                height: 35,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(color: mainColor)),
+                                child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text("Delete Card",style: TextStyle(color: mainColor),),
                                 ),
                               ),
                             ],
@@ -169,10 +185,11 @@ class PaymentDetail extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+
                               FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  "Add another Credit/Debit Card",
+                                  "Other Methods",
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText2!
@@ -181,13 +198,6 @@ class PaymentDetail extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                         //fontSize: 20,
                                       ),
-                                ),
-                              ),
-                              FittedBox(
-                                fit: BoxFit.fitWidth,
-                                child: Icon(
-                                  FontAwesomeIcons.check,
-                                  color: mainColor,
                                 ),
                               ),
                             ],
