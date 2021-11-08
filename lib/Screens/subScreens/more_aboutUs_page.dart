@@ -4,7 +4,7 @@ import 'package:foodecom/model/notifications_list_model.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
 
-class Notifications extends StatelessWidget {
+class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class Notifications extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "Notifications",
+            "About Us",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
@@ -54,7 +54,7 @@ class Notifications extends StatelessWidget {
       physics: BouncingScrollPhysics(),
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      itemCount: NotificationsList.list.length,
+      itemCount: NotificationsList.list.length-4,
       itemBuilder: (context, index) {
         NotificationsList data = NotificationsList.list[index];
         return Column(
@@ -67,54 +67,44 @@ class Notifications extends StatelessWidget {
 //                  state=false;
 //                });
               },
-              child: Container(
-                alignment: Alignment.center,
-                height: 70,
-                width: MediaQuery.of(context).size.width,
-                color: index%2 ==0 ? Colors.black12 : Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Container(
+                  //alignment: Alignment.center,
+                  //height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  color: index%2 ==0 ? Colors.white : Colors.white,
 //                decoration: BoxDecoration(
 //                  border: Border.all(color: placeholderColor),
 //                ),
 
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Icon(FontAwesomeIcons.solidDotCircle,size: 10,color: mainColor,),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Icon(FontAwesomeIcons.solidDotCircle,size: 10,color: mainColor,),
+                      ),
+                      Expanded(
+                        flex: 4,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               data.notice!.toString(),
-//                              style: Theme.of(context).textTheme.headline5!.copyWith(
-//                                    color: primaryFontColor,
-//                                    fontWeight: FontWeight.bold,
-//                                    fontSize: 20,
-//                                  ),
-                            ),
-                            FittedBox(
-                              fit: BoxFit.fitWidth,
-                              child: Text(
-                                data.time!.toString(),
-                                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                                  color: placeholderColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
+                              style: Theme.of(context).textTheme.headline5!.copyWith(
+                                    color: placeholderColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10,
+                                  ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

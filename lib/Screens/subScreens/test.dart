@@ -14,6 +14,7 @@ class _TestMenuState extends State<TestMenu> {
   bool state = true;
   @override
   Widget build(BuildContext context) {
+    final size= MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: mainColor,
@@ -33,14 +34,13 @@ class _TestMenuState extends State<TestMenu> {
         ],
       ),
       body: Stack(
-        clipBehavior: Clip.none,
-        //alignment: Alignment.centerLeft,
+        fit: StackFit.expand,
         children: [
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              height: 500,
-              width: 120,
+              height: size.height*.65,
+              width: size.width*.26,
               decoration: BoxDecoration(
                   color: mainColor,
                   borderRadius: BorderRadius.only(
@@ -51,110 +51,18 @@ class _TestMenuState extends State<TestMenu> {
           ),
           Align(
             alignment: Alignment.center,
-            child: InkWell(
-              onTap: (){
-                print("Something");
-              },
-              child: Container(
-                height: 90,
-                width: MediaQuery.of(context).size.width * .70,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70),
-                      bottomLeft: Radius.circular(70),
-                      topRight: Radius.circular(15),
-                      bottomRight: Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0,
-                      blurRadius: 5,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 65.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Copal",
-                          style: Theme.of(context).textTheme.headline5!.copyWith(
-                              color: primaryFontColor, fontWeight: FontWeight.bold)),
-                      Text(
-                        " Items",
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1!
-                            .copyWith(color: primaryFontColor, fontSize: 10),
-                      )
-                    ],
-                  ),
-                ),
+            child: Container(
+              height: size.height*.65,
+              width: size.width,
+              color: Colors.transparent,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+
+                ],
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Transform.rotate(
-              angle: 1.0,
-              child: InkWell(
-                onTap: (){
-                  print("Something");
-                },
-                child: Container(
-                  height: 73,
-                  width: 73,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/menu1.jpg"), fit: BoxFit.fill),
-                    borderRadius: BorderRadius.circular(25),
-                    color: const Color(0xFFE8581C),
-                  ),
-                  padding: const EdgeInsets.all(8.0),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 30,
-            left: 73,
-            child: MenuButtons(
-              type: 'Food',
-              items: "120",
-              level: '1',
-            ),
-          ),
-          Positioned(
-            top: 147,
-            left: 73,
-            child: MenuButtons(
-              type: 'Beverages',
-              items: "220",
-              level: '2',
-            ),
-          ),
-          Positioned(
-            bottom: 147,
-            left: 73,
-            child: MenuButtons(
-              type: 'Desserts',
-              items: "155",
-              level: '3',
-            ),
-          ),
-          Positioned(
-            bottom: 30,
-            left: 73,
-            child: MenuButtons(
-              type: 'Promotions',
-              items: "230",
-              level: '4',
-            ),
-          ),
-          //MenuButtons(type: 'Food', items: "230"),
+          )
         ],
       ),
     );
@@ -206,7 +114,133 @@ class _TestMenuState extends State<TestMenu> {
     );
   }
 }
-
+Widget _buildMenuButton(BuildContext context){
+  return Stack(
+    clipBehavior: Clip.none,
+    //alignment: Alignment.centerLeft,
+    children: [
+      Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          height: 500,
+          width: 120,
+          decoration: BoxDecoration(
+              color: mainColor,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(50),
+                bottomRight: Radius.circular(50),
+              )),
+        ),
+      ),
+      Align(
+        alignment: Alignment.center,
+        child: InkWell(
+          onTap: (){
+            print("Something");
+          },
+          child: Container(
+            height: 90,
+            width: MediaQuery.of(context).size.width * .70,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(70),
+                  bottomLeft: Radius.circular(70),
+                  topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 0,
+                  blurRadius: 5,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 65.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Copal",
+                      style: Theme.of(context).textTheme.headline5!.copyWith(
+                          color: primaryFontColor, fontWeight: FontWeight.bold)),
+                  Text(
+                    " Items",
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(color: primaryFontColor, fontSize: 10),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: Transform.rotate(
+          angle: 1.0,
+          child: InkWell(
+            onTap: (){
+              print("Something");
+            },
+            child: Container(
+              height: 73,
+              width: 73,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/menu1.jpg"), fit: BoxFit.fill),
+                borderRadius: BorderRadius.circular(25),
+                color: const Color(0xFFE8581C),
+              ),
+              padding: const EdgeInsets.all(8.0),
+            ),
+          ),
+        ),
+      ),
+      Positioned(
+        top: 30,
+        left: 73,
+        child: MenuButtons(
+          type: 'Food',
+          items: "120",
+          level: '1',
+        ),
+      ),
+      Positioned(
+        top: 147,
+        left: 73,
+        child: MenuButtons(
+          type: 'Beverages',
+          items: "220",
+          level: '2',
+        ),
+      ),
+      Positioned(
+        bottom: 147,
+        left: 73,
+        child: MenuButtons(
+          type: 'Desserts',
+          items: "155",
+          level: '3',
+        ),
+      ),
+      Positioned(
+        bottom: 30,
+        left: 73,
+        child: MenuButtons(
+          type: 'Promotions',
+          items: "230",
+          level: '4',
+        ),
+      ),
+      //MenuButtons(type: 'Food', items: "230"),
+    ],
+  );
+}
 class MenuButtons extends StatelessWidget {
   String? type;
   String? items;

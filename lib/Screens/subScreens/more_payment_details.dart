@@ -468,7 +468,8 @@ class _PaymentDetailState extends State<PaymentDetail> {
                   ),
                 ],
               ),
-            ));
+            ),
+        );
       },
     );
   }

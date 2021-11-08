@@ -20,7 +20,9 @@ class HeadingRestaurants extends StatelessWidget {
               .copyWith(color: primaryFontColor),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+
+          },
           child: Text(
             "View all",
             style: Theme.of(context)
