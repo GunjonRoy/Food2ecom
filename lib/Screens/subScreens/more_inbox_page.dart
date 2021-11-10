@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodecom/Screens/main_page.dart';
 import 'package:foodecom/model/inbox_list_model.dart';
 import 'package:foodecom/model/notifications_list_model.dart';
 import 'package:foodecom/styles/colors.dart';
@@ -12,7 +13,9 @@ class Inbox extends StatelessWidget {
       appBar: AppBar(
         //backgroundColor: mainColor,
         leading: GestureDetector(
-          onTap: () {/* Write listener code here */},
+          onTap: () {/* Write listener code here */
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()), (Route<dynamic> route) => false);
+            },
           child: Icon(
             Icons.arrow_back_ios,
             color: primaryFontColor, // add custom icons also

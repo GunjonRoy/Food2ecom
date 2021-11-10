@@ -104,7 +104,7 @@ class _MainPageState extends State<MainPage> {
       case 3:
         return MorePage();
       default:
-        return TestMenu();
+        return HomePage();
     }
   }
 }

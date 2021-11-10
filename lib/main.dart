@@ -1,14 +1,15 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodecom/Screens/main_page.dart';
 import 'styles/colors.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  //const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: AppBarTheme(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            titleTextStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
+            titleTextStyle: Theme.of(context).textTheme.bodyText2.copyWith(
               color: primaryFontColor,
               fontSize: 20
             ),

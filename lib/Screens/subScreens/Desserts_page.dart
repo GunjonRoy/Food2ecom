@@ -15,12 +15,12 @@ class Desserts extends StatefulWidget {
 }
 
 class _DessertsState extends State<Desserts> {
-  bool state=true;
-  Widget checkState(){
-    if(state==true){
+  bool state = true;
+  Widget checkState() {
+    if (state == true) {
       return main();
-    }else{
-      state=true;
+    } else {
+      state = true;
       return Detail();
     }
   }
@@ -28,47 +28,56 @@ class _DessertsState extends State<Desserts> {
   Widget build(BuildContext context) {
     return checkState();
   }
-  Widget main(){
+  Widget main() {
     return Scaffold(
-      appBar: AppBar(
-        //backgroundColor: mainColor,
-        leading: GestureDetector(
-          onTap: () { /* Write listener code here */ },
-          child: Icon(
-            Icons.arrow_back_ios,color: primaryFontColor,  // add custom icons also
-          ),
-        ),
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "Desserts",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: IconButton(
-                onPressed: () {}, icon: Icon(FontAwesomeIcons.shoppingCart)),
-          )
-        ],
-      ),
+//      appBar: AppBar(
+//        //backgroundColor: mainColor,
+//        leading: GestureDetector(
+//          onTap: () {/* Write listener code here */},
+//          child: Icon(
+//            Icons.arrow_back_ios,
+//            color: primaryFontColor, // add custom icons also
+//          ),
+//        ),
+//        title: Padding(
+//          padding: const EdgeInsets.all(8.0),
+//          child: Text(
+//            "Desserts",
+//            style: TextStyle(
+//              fontSize: 20,
+//              fontWeight: FontWeight.bold,
+//            ),
+//          ),
+//        ),
+//        actions: [
+//          Padding(
+//            padding: const EdgeInsets.only(right: 15.0),
+//            child: IconButton(
+//                onPressed: () {}, icon: Icon(FontAwesomeIcons.shoppingCart)),
+//          )
+//        ],
+//      ),
       body: ListView(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
             child: searchFoodTextField(),
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           _dessertListView(),
         ],
       ),
     );
   }
-  Widget _dessertListView(){
+
+  Widget _dessertListView() {
     return ListView.separated(
-      separatorBuilder: (context,index){
-        return SizedBox(width: kHorizontalPadding/2,);
+      separatorBuilder: (context, index) {
+        return SizedBox(
+          width: kHorizontalPadding / 2,
+        );
       },
       //padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
       physics: BouncingScrollPhysics(),
@@ -81,10 +90,10 @@ class _DessertsState extends State<Desserts> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             InkWell(
-              onTap: (){
+              onTap: () {
                 print("OK>>>>>>>>>>>>>>>>>>>>");
                 setState(() {
-                  state=false;
+                  state = false;
                 });
               },
               child: Container(
@@ -93,11 +102,9 @@ class _DessertsState extends State<Desserts> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(data.imagePath!.toString()),
-                        fit: BoxFit.fill
-                    )
-                ),
+                        fit: BoxFit.fill)),
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: kScaffoldPadding),
+                  padding: EdgeInsets.symmetric(horizontal: kScaffoldPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -105,31 +112,56 @@ class _DessertsState extends State<Desserts> {
                       Text(
                         data.label!.toString(),
                         style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                          color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20,
-                        ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                       ),
                       Row(
                         children: [
-                          Icon(Icons.star,color: mainColor,size: 15,),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 2),
-                            child: Text(data.rating.toString(),style: TextStyle(color: mainColor),),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0,right: 2),
-                            child: Text(data.ratingTotal.toString(),style: TextStyle(color: placeholderColor),),
+                          Icon(
+                            Icons.star,
+                            color: mainColor,
+                            size: 15,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 2),
-                            child: Text(".",style: TextStyle(color: mainColor,fontWeight: FontWeight.bold,fontSize: 15),),
+                            child: Text(
+                              data.rating.toString(),
+                              style: TextStyle(color: mainColor),
+                            ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left:2,right: 2),
-                            child: Text(data.label.toString(),style: TextStyle(color: placeholderColor,fontWeight: FontWeight.bold),),
+                            padding: const EdgeInsets.only(left: 0, right: 2),
+                            child: Text(
+                              data.ratingTotal.toString(),
+                              style: TextStyle(color: placeholderColor),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2),
+                            child: Text(
+                              ".",
+                              style: TextStyle(
+                                  color: mainColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2, right: 2),
+                            child: Text(
+                              data.label.toString(),
+                              style: TextStyle(
+                                  color: placeholderColor,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           )
                         ],
                       ),
-                      SizedBox(height: 10,)
+                      SizedBox(
+                        height: 10,
+                      )
                     ],
                   ),
                 ),
@@ -150,7 +182,9 @@ class _DessertsState extends State<Desserts> {
 //                          )
 //                        ]),
 //                  ),
-            SizedBox(height: 25.h,),
+            SizedBox(
+              height: 25.h,
+            ),
           ],
         );
       },

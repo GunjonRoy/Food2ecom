@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodecom/Screens/main_page.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
 import 'package:flutter/widgets.dart';
-import 'package:slider_button/slider_button.dart';
 
 class PaymentDetail extends StatefulWidget {
   @override
@@ -22,7 +22,9 @@ class _PaymentDetailState extends State<PaymentDetail> {
       appBar: AppBar(
         //backgroundColor: mainColor,
         leading: GestureDetector(
-          onTap: () {/* Write listener code here */},
+          onTap: () {/* Write listener code here */
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()), (Route<dynamic> route) => false);
+            },
           child: Icon(
             Icons.arrow_back_ios,
             color: primaryFontColor, // add custom icons also
@@ -44,7 +46,9 @@ class _PaymentDetailState extends State<PaymentDetail> {
         ],
       ),
       body: Column(
+
         children: [
+
           Expanded(
             flex: 1,
             child: Padding(
@@ -313,8 +317,13 @@ class _PaymentDetailState extends State<PaymentDetail> {
                       ),
                       FittedBox(
                         fit: BoxFit.fitWidth,
-                        child: Icon(Icons.cancel_outlined),
-                      )
+                        child: IconButton(
+                          onPressed: (){
+                          Navigator.pop(context);
+                        },
+                          icon: Icon(Icons.cancel_outlined),
+                        ),
+                      ),
                     ],
                   ),
                   TextField(

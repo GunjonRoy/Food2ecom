@@ -1,20 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodecom/Screens/main_page.dart';
+import 'package:foodecom/Screens/subScreens/checkout_page.dart';
 import 'package:foodecom/model/inbox_list_model.dart';
 import 'package:foodecom/model/notifications_list_model.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
 
-class MyOrders extends StatelessWidget {
+class MyOrders extends StatefulWidget {
+  @override
+  _MyOrdersState createState() => _MyOrdersState();
+}
+
+class _MyOrdersState extends State<MyOrders> {
+  bool _state=true;
+  checkState(){
+    if(_state==true){
+      return myOrder();
+    }
+    else{
+      return CheckoutPage();
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
+    return checkState();
+  }
+  Widget myOrder(){
     final size=MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           //backgroundColor: mainColor,
           leading: GestureDetector(
-            onTap: () {/* Write listener code here */},
+            onTap: () {/* Write listener code here */
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()), (Route<dynamic> route) => false);
+            },
             child: Icon(
               Icons.arrow_back_ios,
               color: primaryFontColor, // add custom icons also
@@ -73,9 +95,9 @@ class MyOrders extends StatelessWidget {
                             Text(
                               "King Burgers",
                               style:
-                                  Theme.of(context).textTheme.headline5!.copyWith(
-                                        color: primaryFontColor,
-                                      ),
+                              Theme.of(context).textTheme.headline5!.copyWith(
+                                color: primaryFontColor,
+                              ),
                             ),
                             Row(
                               children: [
@@ -107,7 +129,7 @@ class MyOrders extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 2, bottom: 4),
+                                  const EdgeInsets.only(left: 2, bottom: 4),
                                   child: Text(
                                     ".",
                                     style: TextStyle(
@@ -118,7 +140,7 @@ class MyOrders extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(left: 2, right: 15),
+                                  const EdgeInsets.only(left: 2, right: 15),
                                   child: Text(
                                     "Western Food",
                                     style: TextStyle(color: placeholderColor),
@@ -290,7 +312,9 @@ class MyOrders extends StatelessWidget {
 //                    minimumSize: Size(4, 5),
 //                  ),
                             onPressed: () {
-                             // _showModalBottomSheet(size.height * .7, context);
+                              setState(() {
+                                _state=false;
+                              });
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -323,6 +347,7 @@ class MyOrders extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        )
+    );
   }
 }

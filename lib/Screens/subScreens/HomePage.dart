@@ -7,7 +7,6 @@ import '../widgets/home/searchFoodTextField.dart';
 import 'package:foodecom/styles/dimenssions.dart';
 import '../../styles/colors.dart';
 
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,14 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(FontAwesomeIcons.shoppingCart))
+            onPressed: () {
+            },
+            icon: Icon(FontAwesomeIcons.shoppingCart),
+          ),
         ],
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height*.78,
+        height: MediaQuery.of(context).size.height * .78,
         width: MediaQuery.of(context).size.width,
         child: ListView(children: [
           Padding(
@@ -45,7 +47,9 @@ class HomePage extends StatelessWidget {
 //        ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: HeadingRestaurants(heading: 'Popular Restaurants',),
+            child: HeadingRestaurants(
+              heading: 'Popular Restaurants',
+            ),
           ),
           PopulerRestaurantsCategoryList(),
           SizedBox(
@@ -53,12 +57,16 @@ class HomePage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: HeadingRestaurants(heading: 'Most Popular',),
+            child: HeadingRestaurants(
+              heading: 'Most Popular',
+            ),
           ),
           MostPopularList(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: HeadingRestaurants(heading: 'Recent Items',),
+            child: HeadingRestaurants(
+              heading: 'Recent Items',
+            ),
           ),
           RecentItems()
         ]),

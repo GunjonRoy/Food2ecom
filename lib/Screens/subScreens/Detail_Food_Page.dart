@@ -26,6 +26,7 @@ class _DetailState extends State<Detail> {
             fit: BoxFit.fill,
           ),
         ),
+
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
@@ -42,7 +43,8 @@ class _DetailState extends State<Detail> {
 //              ),
 //              fit: BoxFit.fill,
 //            )
-                ),
+
+            ),
             child: Stack(
               //fit: StackFit.expand,
               clipBehavior: Clip.none,

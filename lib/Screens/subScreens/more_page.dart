@@ -1,14 +1,65 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodecom/Screens/subScreens/more_aboutUs_page.dart';
+import 'package:foodecom/Screens/subScreens/more_inbox_page.dart';
+import 'package:foodecom/Screens/subScreens/more_myorder_page.dart';
+import 'package:foodecom/Screens/subScreens/more_notification_page.dart';
 import 'package:foodecom/Screens/subScreens/more_payment_details.dart';
 import 'package:foodecom/styles/colors.dart';
 import 'package:foodecom/styles/dimenssions.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-class MorePage extends StatelessWidget {
+class MorePage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+  _MorePageState createState() => _MorePageState();
+}
+
+class _MorePageState extends State<MorePage> {
+
+  bool menuMore = true;
+  bool payment=false;
+  bool myOrder=false;
+  bool notification=false;
+  bool inbox=false;
+  bool aboutUs=false;
+  Widget checkState(BuildContext context){
+    if(menuMore==true){
+      menuMore = true;
+      payment=false;
+      myOrder=false;
+      notification=false;
+      inbox=false;
+      aboutUs=false;
+      return moreMenu(context);
+    }else if(payment==true){
+      menuMore = true;
+      return PaymentDetail();
+    }
+    else if(myOrder==true){
+      menuMore = true;
+      return MyOrders();
+    }
+    else if(notification==true){
+      menuMore = true;
+      return Notifications();
+    }
+    else if(inbox==true){
+      menuMore = true;
+      return Inbox();
+    }
+    else if(aboutUs==true){
+      menuMore = true;
+      return AboutUs();
+    }
+    else{
+      menuMore=true;
+      return PaymentDetail();
+    }
+  }
+  //bool state = true;
+  Widget moreMenu(BuildContext context){
+    final size=MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: mainColor,
@@ -40,7 +91,15 @@ class MorePage extends StatelessWidget {
               child: InkWell(
                 onTap: (){
                   print("okkkk>>>>>");
-                  PaymentDetail();
+                  setState(() {
+                    menuMore = false;
+                    payment=true;
+                    myOrder=false;
+                    notification=false;
+                    inbox=false;
+                    aboutUs=false;
+                  });
+                  //PaymentDetail();
                 },
                 child: _buildButtonCustom(
                     size,
@@ -54,47 +113,96 @@ class MorePage extends StatelessWidget {
             ),
             Expanded(
               flex: 1,
-              child: _buildButtonCustom(
-                  size,
-                  context,
-                  Icon(
-                    FontAwesomeIcons.shoppingBag,
-                    color: primaryFontColor,
-                  ),
-                  "My Orders"),
+              child: InkWell(
+                onTap: (){
+                  print("okkkk>>>>>");
+                  setState(() {
+                    menuMore = false;
+                    payment=false;
+                    myOrder=true;
+                    notification=false;
+                    inbox=false;
+                    aboutUs=false;
+                  });
+                },
+                child: _buildButtonCustom(
+                    size,
+                    context,
+                    Icon(
+                      FontAwesomeIcons.shoppingBag,
+                      color: primaryFontColor,
+                    ),
+                    "My Orders"),
+              ),
             ),
             Expanded(
               flex: 1,
-              child: _buildButtonCustom(
-                  size,
-                  context,
-                  Icon(
-                    FontAwesomeIcons.bell,
-                    color: primaryFontColor,
-                  ),
-                  "Notifications"),
+              child: InkWell(
+                onTap: (){
+                  setState(() {
+                    menuMore = false;
+                    payment=false;
+                    myOrder=false;
+                    notification=true;
+                    inbox=false;
+                    aboutUs=false;
+                  });
+                },
+                child: _buildButtonCustom(
+                    size,
+                    context,
+                    Icon(
+                      FontAwesomeIcons.bell,
+                      color: primaryFontColor,
+                    ),
+                    "Notifications"),
+              ),
             ),
             Expanded(
               flex: 1,
-              child: _buildButtonCustom(
-                  size,
-                  context,
-                  Icon(
-                    Icons.email,
-                    color: primaryFontColor,
-                  ),
-                  "Inbox"),
+              child: InkWell(
+                onTap: (){
+                  setState(() {
+                    menuMore = false;
+                    payment=false;
+                    myOrder=false;
+                    notification=false;
+                    inbox=true;
+                    aboutUs=false;
+                  });
+                },
+                child: _buildButtonCustom(
+                    size,
+                    context,
+                    Icon(
+                      Icons.email,
+                      color: primaryFontColor,
+                    ),
+                    "Inbox"),
+              ),
             ),
             Expanded(
               flex: 1,
-              child: _buildButtonCustom(
-                  size,
-                  context,
-                  Icon(
-                    FontAwesomeIcons.info,
-                    color: primaryFontColor,
-                  ),
-                  "About Us"),
+              child: InkWell(
+                onTap: (){
+                  setState(() {
+                    menuMore = false;
+                    payment=false;
+                    myOrder=false;
+                    notification=false;
+                    inbox=false;
+                    aboutUs=true;
+                  });
+                },
+                child: _buildButtonCustom(
+                    size,
+                    context,
+                    Icon(
+                      FontAwesomeIcons.info,
+                      color: primaryFontColor,
+                    ),
+                    "About Us"),
+              ),
             ),
             Expanded(
               flex: 2,
@@ -104,6 +212,11 @@ class MorePage extends StatelessWidget {
         ),
       ),
     );
+  }
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return checkState(context);
   }
 
   Widget _buildButtonCustom(
