@@ -74,8 +74,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           children: [
                             IconButton(
                               onPressed: () {
-//                                Navigator.pushReplacementNamed(
-//                                    context, kRouteLogin);
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => MainPage()), (Route<dynamic> route) => false);
                               },
                               icon: const Icon(
                                 Icons.arrow_back_ios,

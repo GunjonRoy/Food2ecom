@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodecom/Screens/main_page.dart';
+import 'package:foodecom/src/pages/pages.dart';
 import 'styles/colors.dart';
+import 'package:foodecom/constants.dart';
 
 void main() {
   runApp( MyApp());
@@ -78,7 +80,17 @@ class MyApp extends StatelessWidget {
             )
           )
         ),
-        home: MainPage(),
+        routes: {
+          kRouteRoot: (context) =>  SplashPage(),
+          kRouteIntro: (context) => const IntroPage(),
+          kRouteStarter: (context) => const StarterPage(),
+          kRouteLogin: (context) => const LoginPage(),
+          kRouteRegister: (context) => const RegisterPage(),
+
+          //checkout
+          //kRouteCheckout: (context) => const CheckoutPage(),
+        },
+        //home: MainPage(),
       ),
     );
   }

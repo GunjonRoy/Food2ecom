@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 Color mainColor=Color(0xfffc6011);
 Color primaryFontColor=Color(0xff4a4b4d);
 Color secondaryFontColor=Color(0xff7c7d7e);

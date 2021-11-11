@@ -30,7 +30,8 @@ class _ChangeAddressPageState extends State<ChangeAddressPage> {
                       child: Row(
                         children: [
                           IconButton(
-                            onPressed: () {
+                            onPressed: (){
+                              Navigator.pop(context);
 //                              Navigator.pushReplacementNamed(
 //                                  context, kRouteLogin);
                             },
